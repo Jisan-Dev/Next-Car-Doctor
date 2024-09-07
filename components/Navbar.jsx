@@ -4,10 +4,13 @@ import Link from 'next/link';
 import React from 'react';
 import logo from '../public/images/logo.svg';
 import { usePathname } from 'next/navigation';
+import { signOut, useSession } from 'next-auth/react';
 
 export default function Navbar() {
   const pathName = usePathname();
   const user = true;
+  const session = useSession();
+  console.log('session ,', session);
   const navItems = (
     <>
       <li>
@@ -85,7 +88,16 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-outline btn-primary px-7 h-14 text-lg font-bold">Appointment</button>
+        <button className="btn btn-outline btn-primary px-7 font-bold mr-3">Appointment</button>
+        {!session?.data ? (
+          <Link href={'/api/auth/signin'}>
+            <button className="btn btn-primary px-8">Login</button>
+          </Link>
+        ) : (
+          <button className="btn btn-primary px-8" onClick={() => signOut()}>
+            Logout
+          </button>
+        )}
       </div>
     </div>
   );

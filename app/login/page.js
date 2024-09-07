@@ -1,9 +1,27 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import img from '../../public/images/login.svg';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
-export default function page() {
+export default function Page() {
+  const router = useRouter();
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const formData = Object.fromEntries(form.entries());
+    const resp = await signIn('credentials', { email: formData.email, password: formData.password, redirect: false });
+    console.log(resp);
+    if (resp.ok) {
+      alert('Logged in successfully');
+      e.target.reset();
+      router.push('/');
+    } else {
+      alert('Failed to login');
+    }
+  };
   return (
     <div className="hero min-h-screen mb-16">
       <div className="hero-content flex-col lg:flex-row gap-8">
@@ -13,7 +31,7 @@ export default function page() {
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
             <h1 className="text-3xl text-center font-bold">Login</h1>
-            <form>
+            <form onSubmit={handleLogin}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>

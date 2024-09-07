@@ -21,6 +21,7 @@ export default function page() {
       console.error(data.error);
     } else {
       console.log(data.message, data);
+      e.target.reset();
     }
   };
   return (
