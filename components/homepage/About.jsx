@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const About = () => {
   return (
-    <div className="hero min-h-screen mt-20">
+    <div className="hero min-h-screen my-20">
       <div className="hero-content flex-col lg:flex-row">
         <div className="lg:w-1/2 relative">
           <Image alt="" src={person} className="w-3/4 h-[473px] object-cover rounded-lg shadow-2xl" />
