@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import img from '../../public/images/login.svg';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 export default function page() {
   return (
@@ -34,12 +35,26 @@ export default function page() {
                 <input className="btn btn-primary" type="submit" value="Login" />
               </div>
             </form>
-            <p className="my-4 text-center">
+            <p className="mt-4 text-center text-sm text-gray-600">
               New to Car Doctors{' '}
-              <Link className="text-orange-600 font-bold" href="/signup">
+              <Link className="text-orange-600 font-bold hover:underline" href="/signup">
                 Sign Up
-              </Link>
+              </Link>{' '}
+              here
             </p>
+            <div className="flex items-center justify-center">
+              <hr className="h-1 bg-orange-100 flex-1 " />
+              <p className="text-center text-sm my-2 text-gray-400 flex-1">or sign in with</p>
+              <hr className="h-1 bg-orange-100 flex-1" />
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <button className="btn text-primary px-4 hover:bg-gray-800">
+                <FaGoogle className="text-xl" />
+              </button>
+              <button className="btn text-primary px-4 hover:bg-gray-800">
+                <FaGithub className="text-xl" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
