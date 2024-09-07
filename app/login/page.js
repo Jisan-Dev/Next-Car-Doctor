@@ -2,9 +2,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import img from '../../public/images/login.svg';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import SocialLogin from '@/components/SocialLogin';
 
 export default function Page() {
   const router = useRouter();
@@ -65,14 +65,7 @@ export default function Page() {
               <p className="text-center text-sm my-2 text-gray-400 flex-1">or sign in with</p>
               <hr className="h-1 bg-orange-100 flex-1" />
             </div>
-            <div className="flex items-center justify-center gap-4">
-              <button className="btn text-primary px-4 hover:bg-gray-800">
-                <FaGoogle className="text-xl" />
-              </button>
-              <button className="btn text-primary px-4 hover:bg-gray-800">
-                <FaGithub className="text-xl" />
-              </button>
-            </div>
+            <SocialLogin />
           </div>
         </div>
       </div>

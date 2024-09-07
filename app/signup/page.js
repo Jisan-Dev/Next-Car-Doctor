@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import img from '../../public/images/login.svg';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import SocialLogin from '@/components/SocialLogin';
 
 export default function page() {
   const handleSubmit = async (e) => {
@@ -73,14 +73,7 @@ export default function page() {
               <p className="text-center text-sm my-2 text-gray-400 flex-1">or sign up with</p>
               <hr className="h-1 bg-orange-100 flex-1" />
             </div>
-            <div className="flex items-center justify-center gap-4">
-              <button className="btn text-primary px-4 hover:bg-gray-800">
-                <FaGoogle className="text-xl" />
-              </button>
-              <button className="btn text-primary px-4 hover:bg-gray-800">
-                <FaGithub className="text-xl" />
-              </button>
-            </div>
+            <SocialLogin />
           </div>
         </div>
       </div>
