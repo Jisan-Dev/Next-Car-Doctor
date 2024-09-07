@@ -1,9 +1,12 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import logo from '../public/images/logo.svg';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
+  const pathName = usePathname();
   const user = true;
   const navItems = (
     <>
@@ -33,6 +36,19 @@ export default function Navbar() {
       )}
     </>
   );
+
+  const links = [
+    {
+      sn: 1,
+      title: 'Home',
+      href: '/',
+    },
+    {
+      sn: 2,
+      title: 'Login',
+      href: '/login',
+    },
+  ];
   return (
     <div className="navbar bg-base-100 h-28 container mx-auto font-[family-name:var(--font-geist-mono)]">
       <div className="navbar-start">
@@ -43,7 +59,14 @@ export default function Navbar() {
             </svg>
           </label>
           <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-neutral-700 text-lg font-semibold z-20">
-            {navItems}
+            {/* {navItems} */}
+            {links.map((link) => (
+              <li key={link.sn}>
+                <Link className={`${pathName === link.href && 'text-primary'} py-2 px-4 max-sm:text-base font-bold hover:text-primary transition-all`} href={link.href}>
+                  {link.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <Link href="/" className="normal-case text-xl font-[family-name:var(--font-geist-sans)]">
@@ -51,7 +74,15 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="gap-4 menu-horizontal text-neutral-700 text-lg ">{navItems}</ul>
+        <ul className="gap-4 menu-horizontal text-neutral-700 text-lg ">
+          {links.map((link) => (
+            <li key={link.sn}>
+              <Link className={`${pathName === link.href && 'text-primary'} py-2 px-4 max-sm:text-base font-bold hover:text-primary transition-all`} href={link.href}>
+                {link.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="navbar-end">
         <button className="btn btn-outline btn-primary px-7 h-14 text-lg font-bold">Appointment</button>
