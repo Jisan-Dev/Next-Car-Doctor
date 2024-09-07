@@ -1,9 +1,28 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import img from '../../public/images/login.svg';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 export default function page() {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    const formData = Object.fromEntries(form.entries());
+    console.log(formData);
+    // Make API request to server to sign up user
+    const response = await fetch('http://localhost:3000/signup/api', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+    const data = await response.json();
+    if (data.error) {
+      console.error(data.error);
+    } else {
+      console.log(data.message, data);
+    }
+  };
   return (
     <div className="hero min-h-screen mb-16">
       <div className="hero-content flex-col lg:flex-row gap-8">
@@ -13,7 +32,7 @@ export default function page() {
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
             <h1 className="text-3xl text-center font-bold">Sign Up</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
