@@ -4,7 +4,7 @@ import ServiceCard from './ServiceCard';
 
 export default function Services() {
   return (
-    <div className="mb-32 mt-44">
+    <div className="mt-44">
       <div className="text-center">
         <h3 className="text-xl font-bold text-primary">Services</h3>
         <h2 className="text-neutral-900 text-[45px] font-bold">Our Service Area</h2>

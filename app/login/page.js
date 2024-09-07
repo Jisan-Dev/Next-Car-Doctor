@@ -5,7 +5,7 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 export default function page() {
   return (
-    <div className="hero min-h-screen">
+    <div className="hero min-h-screen mb-16">
       <div className="hero-content flex-col lg:flex-row gap-8">
         <div className="w-1/2 mr-12">
           <Image src={img} alt="login page image" />
