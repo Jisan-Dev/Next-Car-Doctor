@@ -80,7 +80,9 @@ export default function Navbar() {
         <ul className="gap-4 menu-horizontal text-neutral-700 text-lg ">
           {links.map((link) => (
             <li key={link.sn}>
-              <Link className={`${pathName === link.href && 'text-primary'} py-2 px-4 max-sm:text-base font-bold hover:text-primary transition-all`} href={link.href}>
+              <Link
+                className={`${pathName === link.href && 'text-primary'} py-2 px-4 text-base font-bold hover:text-primary transition-all tracking-widest uppercase`}
+                href={link.href}>
                 {link.title}
               </Link>
             </li>
